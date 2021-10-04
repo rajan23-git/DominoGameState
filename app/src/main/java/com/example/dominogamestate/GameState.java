@@ -8,6 +8,7 @@ public class GameState {
     private int playerThreeScore;
     private int playerFourScore;
     private int playerCount;
+    private int[] players = new int[playerCount];
 
     DominoSet dominoSet;
     Domino[][] board;
@@ -19,6 +20,11 @@ public class GameState {
         playerTwoScore = 0;
         playerThreeScore = 0;
         playerFourScore = 0;
+
+        for(int i=0; i <playerCount;i++)
+        {
+            players[i]=i;
+        }
 
         // First domino will be placed at [2][5]!!
         board = new Domino[5][11];
@@ -33,7 +39,9 @@ public class GameState {
         player4Hand = new ArrayList<>();
 
         for(int i = 0; i < 5; i++){
+            //add to player's hands
             player1Hand.add(dominoSet.dominos.get(0));
+            //remove from deck
             dominoSet.dominos.remove(0);
 
             player2Hand.add(dominoSet.dominos.get(0));
@@ -94,6 +102,11 @@ public class GameState {
         return false;
     }
 
+    public boolean drawPiece(int playerID){
+
+        return false;
+    }
+
     public boolean quitGame(int playerID){
         return false;
     }
@@ -102,9 +115,6 @@ public class GameState {
         return false;
     }
 
-    public boolean drawPiece(int playerID){
 
-        return false;
-    }
 
 }
