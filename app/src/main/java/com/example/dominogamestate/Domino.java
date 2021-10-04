@@ -18,4 +18,10 @@ public class Domino {
         orientation = paramOrientation;
     }
 
+    public String toString(){
+        String s = new String();
+        s += "(" + leftPipsCount + "," + rightPipsCount + ")";
+        return s;
+    }
+
 }

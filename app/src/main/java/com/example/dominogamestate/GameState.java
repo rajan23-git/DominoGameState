@@ -63,6 +63,7 @@ public class GameState {
     }
     @Override
     public String toString(){
+        //Player scores
         String s = "Player One Score: " + playerOneScore + ".\nPlayer Two Score: " + playerTwoScore + ".";
         if (playerCount >= 3){
             s += "\nPlayer Three Score: " + playerThreeScore + ".";
@@ -70,7 +71,15 @@ public class GameState {
         if (playerCount == 4){
             s += "\nPlayer Four Score: " + playerFourScore + ".";
         }
-        //add code for printing each player's hand
+        //Player hands
+        s += "Player One hand: " + player1Hand.toString() + ".";
+        s += "\nPlayer Two hand: " + player2Hand.toString() + ".";
+        if (playerCount >= 3){
+            s += "\nPlayer Three hand: " + player3Hand.toString() + ".";
+        }
+        if (playerCount == 4){
+            s += "\nPlayer Four hand: " + player4Hand.toString() + ".";
+        }
 
         return s;
     }
@@ -114,7 +123,5 @@ public class GameState {
     public boolean newGame(int playerID){
         return false;
     }
-
-
 
 }
