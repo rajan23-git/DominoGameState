@@ -20,7 +20,7 @@ public class Domino {
 
     public String toString(){
         String s = new String();
-        s += "(" + leftPipsCount + "," + rightPipsCount + ")";
+        s += "(" + leftPipsCount + "|" + rightPipsCount + ")";
         return s;
     }
 

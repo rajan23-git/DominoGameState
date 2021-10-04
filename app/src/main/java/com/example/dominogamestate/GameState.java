@@ -63,22 +63,26 @@ public class GameState {
     }
     @Override
     public String toString(){
+        String s = new String();
+
         //Player scores
-        String s = "Player One Score: " + playerOneScore + ".\nPlayer Two Score: " + playerTwoScore + ".";
+        s += "Player One Score: " + playerOneScore + ".";
+        s += "\nPlayer Two Score: " + playerTwoScore + ".";
         if (playerCount >= 3){
             s += "\nPlayer Three Score: " + playerThreeScore + ".";
         }
         if (playerCount == 4){
             s += "\nPlayer Four Score: " + playerFourScore + ".";
         }
+
         //Player hands
-        s += "Player One hand: " + player1Hand.toString() + ".";
-        s += "\nPlayer Two hand: " + player2Hand.toString() + ".";
+        s += "Player One Hand: " + player1Hand.toString() + ".";
+        s += "\nPlayer Two Hand: " + player2Hand.toString() + ".";
         if (playerCount >= 3){
-            s += "\nPlayer Three hand: " + player3Hand.toString() + ".";
+            s += "\nPlayer Three Hand: " + player3Hand.toString() + ".";
         }
         if (playerCount == 4){
-            s += "\nPlayer Four hand: " + player4Hand.toString() + ".";
+            s += "\nPlayer Four Hand: " + player4Hand.toString() + ".";
         }
 
         return s;
