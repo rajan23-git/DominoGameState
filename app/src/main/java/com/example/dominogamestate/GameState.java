@@ -62,6 +62,7 @@ public class GameState {
         if (playerCount == 4){
             s += "\nPlayer Four Score: " + playerFourScore + ".";
         }
+        //add code for printing each player's hand
 
         return s;
     }
