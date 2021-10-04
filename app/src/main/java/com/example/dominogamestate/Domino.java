@@ -2,20 +2,20 @@ package com.example.dominogamestate;
 
 public class Domino {
 
-    private int leftPips;
-    private int rightPips;
+    private int leftPipsCount;
+    private int rightPipsCount;
     private int orientation;
 
     public Domino(){
-        leftPips = 0;
-        rightPips = 0;
+        leftPipsCount = 0;
+        rightPipsCount = 0;
         orientation = 0;
     }
 
-    public Domino(int pipsLeft, int pipsRight, int dOrientation){
-        leftPips = pipsLeft;
-        rightPips = pipsRight;
-        orientation = dOrientation;
+    public Domino(int pipsLeft, int pipsRight, int paramOrientation){
+        leftPipsCount = pipsLeft;
+        rightPipsCount = pipsRight;
+        orientation = paramOrientation;
     }
 
 }
