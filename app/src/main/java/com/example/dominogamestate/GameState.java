@@ -3,26 +3,21 @@ package com.example.dominogamestate;
 import java.util.ArrayList;
 
 public class GameState {
-    private int playerOneScore;
-    private int playerTwoScore;
-    private int playerThreeScore;
-    private int playerFourScore;
     private int playerCount;
+    private int[] playerScore = new int[playerCount];
     private int[] players = new int[playerCount];
 
     DominoSet dominoSet;
     Domino[][] board;
     ArrayList<Domino> boneyard;
+
     ArrayList<Domino> player1Hand, player2Hand, player3Hand, player4Hand;
 
     public GameState() {
-        playerOneScore = 0;
-        playerTwoScore = 0;
-        playerThreeScore = 0;
-        playerFourScore = 0;
 
         for(int i=0; i <playerCount;i++)
         {
+            playerScore[i] = 0;
             players[i]=i;
         }
 
@@ -66,13 +61,13 @@ public class GameState {
         String s = new String();
 
         //Player scores
-        s += "Player One Score: " + playerOneScore + ".";
-        s += "\nPlayer Two Score: " + playerTwoScore + ".";
+        s += "Player One Score: " + playerScore[0] + ".";
+        s += "\nPlayer Two Score: " + playerScore[1] + ".";
         if (playerCount >= 3){
-            s += "\nPlayer Three Score: " + playerThreeScore + ".";
+            s += "\nPlayer Three Score: " + playerScore[2] + ".";
         }
         if (playerCount == 4){
-            s += "\nPlayer Four Score: " + playerFourScore + ".";
+            s += "\nPlayer Four Score: " + playerScore[3] + ".";
         }
 
         //Player hands
@@ -90,23 +85,43 @@ public class GameState {
 
 
     public GameState(GameState other) {
-        playerOneScore = other.playerOneScore;
-        playerTwoScore = other.playerTwoScore;
-        playerThreeScore = other.playerThreeScore;
-        playerFourScore = other.playerFourScore;
         playerCount = other.playerCount;
 
-        board = new Domino[5][11];
-        boneyard = new ArrayList<>(other.boneyard.size());
-        dominoSet = new DominoSet();
+        this.players = new int[playerCount];
+        this.playerScore = new int[playerCount];
+
+        for(int i=0; i <playerCount;i++) {
+            this.playerScore[i] = other.playerScore[i];
+            this.players[i]= other.players[i];
+        }
+
+        this.board = new Domino[5][11];
+        this.boneyard = new ArrayList<>(other.boneyard.size());
+        this.dominoSet = new DominoSet();
+
+        for (int i = 0; i < board.length; i++){
+            for(int j = 0; j < board[i].length; j++){
+                this.board[i][j] = other.board[i][j];
+            }
+        }
 
         for (int i = 0; i < boneyard.size(); i++){
-            boneyard.set(i, other.boneyard.get(i));
+            this.boneyard.set(i, other.boneyard.get(i));
         }
 
         for (int i = 0; i < dominoSet.dominos.size(); i++){
-            dominoSet.dominos.set(i, other.dominoSet.dominos.get(i));
+            this.dominoSet.dominos.set(i, other.dominoSet.dominos.get(i));
         }
+
+        this.player1Hand = new ArrayList<>();
+        this.player2Hand = new ArrayList<>();
+        this.player3Hand = new ArrayList<>();
+        this.player4Hand = new ArrayList<>();
+
+        this.player1Hand = other.player1Hand;
+        this.player2Hand = other.player2Hand;
+        this.player3Hand = other.player3Hand;
+        this.player4Hand = other.player4Hand;
 
     }
     // Fill these in later!!!! Just putting these in to show what we need to do.
