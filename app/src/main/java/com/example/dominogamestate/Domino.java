@@ -21,6 +21,13 @@ public class Domino {
         weight = weightParam;
     }
 
+    public Domino(Domino other){
+        this.leftPipsCount = other.leftPipsCount;
+        this.rightPipsCount = other.rightPipsCount;
+        this.orientation = other.orientation;
+        this.weight = other.weight;
+    }
+
     public String toString(){
         String s = new String();
         s += "(" + leftPipsCount + "|" + rightPipsCount + ")";
