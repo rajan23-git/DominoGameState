@@ -101,12 +101,13 @@ public class GameState {
     public GameState(GameState other) {
         playerCount = other.playerCount;
 
-        this.players = new int[playerCount];
-        this.playerScore = new int[playerCount];
+        //this.players = new int[playerCount];
+        //this.playerScore = new int[playerCount];
 
         for(int i=0; i <playerCount;i++) {
-            this.playerScore[i] = other.playerScore[i];
-            this.players[i]= other.players[i];
+            //this.playerScore[i] = other.playerScore[i];
+            //this.players[i]= other.players[i];
+
         }
 
         this.board = new Domino[5][11];
@@ -126,7 +127,7 @@ public class GameState {
         for (int i = 0; i < dominoSet.dominos.size(); i++){
             this.dominoSet.dominos.set(i, other.dominoSet.dominos.get(i));
         }
-
+        /*
         this.player1Hand = new ArrayList<>();
         this.player2Hand = new ArrayList<>();
         this.player3Hand = new ArrayList<>();
@@ -136,6 +137,7 @@ public class GameState {
         this.player2Hand = other.player2Hand;
         this.player3Hand = other.player3Hand;
         this.player4Hand = other.player4Hand;
+         */
 
     }
     // Fill these in later!!!! Just putting these in to show what we need to do.
