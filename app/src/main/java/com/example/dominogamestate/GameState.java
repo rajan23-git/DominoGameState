@@ -5,6 +5,7 @@ import android.app.Activity;
 import java.util.ArrayList;
 
 public class GameState {
+
     private int playerCount;
     //private int[] playerScore = new int[playerCount];
     //private int[] players = new int[playerCount];
@@ -16,9 +17,8 @@ public class GameState {
     //ArrayList<Domino> player1Hand, player2Hand, player3Hand, player4Hand;
     //ArrayList<Domino> playerHand;
     ArrayList<Players> user = new ArrayList<Players>(playerCount);
+
     public GameState() {
-
-
 
         for(int i=0; i <playerCount;i++)
         {
@@ -29,8 +29,6 @@ public class GameState {
             user.add(x);
         }
         user.get(0);
-
-
 
         // First domino will be placed at [2][5]!!
         board = new Domino[5][11];
@@ -43,8 +41,6 @@ public class GameState {
         //player2Hand = new ArrayList<>();
         //player3Hand = new ArrayList<>();
         //player4Hand = new ArrayList<>();
-
-
 
 
         for(int i = 0; i < 5; i++){
@@ -72,37 +68,6 @@ public class GameState {
         }
 
     }
-    @Override
-    public String toString(){
-        String s = new String();
-       /* //Player scores
-        s += "Player One Score: " + playerScore[0] + ".";
-        s += "\nPlayer Two Score: " + playerScore[1] + ".";
-        if (playerCount >= 3){
-            s += "\nPlayer Three Score: " + playerScore[2] + ".";
-        }
-        if (playerCount == 4){
-            s += "\nPlayer Four Score: " + playerScore[3] + ".";
-        }
-*/
-        for (int i = 0; i < user.size(); i++){
-            s += user.get(i).toString();
-        }
-        /*
-        //Player hands
-
-        s += "Player One Hand: " + player1Hand.toString() + ".";
-        s += "\nPlayer Two Hand: " + player2Hand.toString() + ".";
-        if (playerCount >= 3){
-            s += "\nPlayer Three Hand: " + player3Hand.toString() + ".";
-        }
-        if (playerCount == 4){
-            s += "\nPlayer Four Hand: " + player4Hand.toString() + ".";
-        }
-        */
-        return s;
-    }
-
 
     public GameState(GameState other) {
         playerCount = other.playerCount;
@@ -156,7 +121,6 @@ public class GameState {
         return false;
     }
 
-
     public boolean drawPiece(int playerID){
 
         return false;
@@ -171,6 +135,35 @@ public class GameState {
         return false;
     }
 
+    @Override
+    public String toString(){
+        String s = new String();
+       /* //Player scores
+        s += "Player One Score: " + playerScore[0] + ".";
+        s += "\nPlayer Two Score: " + playerScore[1] + ".";
+        if (playerCount >= 3){
+            s += "\nPlayer Three Score: " + playerScore[2] + ".";
+        }
+        if (playerCount == 4){
+            s += "\nPlayer Four Score: " + playerScore[3] + ".";
+        }
+*/
+        for (int i = 0; i < user.size(); i++){
+            s += user.get(i).toString();
+        }
+        /*
+        //Player hands
 
+        s += "Player One Hand: " + player1Hand.toString() + ".";
+        s += "\nPlayer Two Hand: " + player2Hand.toString() + ".";
+        if (playerCount >= 3){
+            s += "\nPlayer Three Hand: " + player3Hand.toString() + ".";
+        }
+        if (playerCount == 4){
+            s += "\nPlayer Four Hand: " + player4Hand.toString() + ".";
+        }
+        */
+        return s;
+    }
 
 }
