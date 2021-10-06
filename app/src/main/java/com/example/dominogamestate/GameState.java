@@ -108,23 +108,14 @@ public class GameState {
 
 
     public boolean drawPiece(int playerID){
-        int count = 0;
 
-        outerloop:
-        while(!dominoSet.dominos.isEmpty()) {
-            if (placePiece() == false) {
-                user.get(playerID).getHand().add(dominoSet.dominos.get(count));
-                count++;
-            }
-            else
-            {
-                break outerloop;
-            }
-        }
-        if(dominoSet.dominos.isEmpty() && drawPiece() == false)
-        {
+        if (boneyard.isEmpty()){
             return false;
         }
+
+        user.get(playerID).getHand().add(boneyard.get(0));
+        boneyard.remove(0);
+
         return true;
     }
 
@@ -140,31 +131,11 @@ public class GameState {
     @Override
     public String toString(){
         String s = new String();
-       /* //Player scores
-        s += "Player One Score: " + playerScore[0] + ".";
-        s += "\nPlayer Two Score: " + playerScore[1] + ".";
-        if (playerCount >= 3){
-            s += "\nPlayer Three Score: " + playerScore[2] + ".";
-        }
-        if (playerCount == 4){
-            s += "\nPlayer Four Score: " + playerScore[3] + ".";
-        }
-*/
+
         for (int i = 0; i < user.size(); i++){
             s += user.get(i).toString();
         }
-        /*
-        //Player hands
 
-        s += "Player One Hand: " + player1Hand.toString() + ".";
-        s += "\nPlayer Two Hand: " + player2Hand.toString() + ".";
-        if (playerCount >= 3){
-            s += "\nPlayer Three Hand: " + player3Hand.toString() + ".";
-        }
-        if (playerCount == 4){
-            s += "\nPlayer Four Hand: " + player4Hand.toString() + ".";
-        }
-        */
         return s;
     }
 

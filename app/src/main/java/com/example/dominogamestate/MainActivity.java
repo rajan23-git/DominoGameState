@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button b = (Button)findViewById(R.id.runTest);
+        Button b = (Button) findViewById(R.id.runTest);
         b.setOnClickListener(this);
     }
 
@@ -22,15 +22,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.runTest){
+            EditText e = findViewById(R.id.outputText);
+            e.getText().clear();
             Log.d("d", "runTest pressed");
 
             //creating a new gamestate
             GameState firstInstance = new GameState();
+            e.setText(firstInstance.toString());
             //Making deep copy from player 1 perspective
             GameState secondInstance = new GameState(firstInstance);
 
             //Printing out gamestate to the text box
-            EditText e = findViewById(R.id.outputText);
             e.setText(secondInstance.toString());
 
         }
