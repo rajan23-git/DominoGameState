@@ -30,5 +30,12 @@ public class Players {
     {
         this.score = score;
     }
-
+    public String toString(){
+        String s = new String();
+        s += "Player " + (id + 1) + " Score: " + score + "\nHand: ";
+        for (Domino d:playerHand) {
+            s += d.toString() + ", ";
+        }
+        return s;
+    }
 }

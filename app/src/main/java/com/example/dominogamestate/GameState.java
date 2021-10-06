@@ -1,5 +1,7 @@
 package com.example.dominogamestate;
 
+import android.app.Activity;
+
 import java.util.ArrayList;
 
 public class GameState {
@@ -73,8 +75,7 @@ public class GameState {
     @Override
     public String toString(){
         String s = new String();
-
-        //Player scores
+       /* //Player scores
         s += "Player One Score: " + playerScore[0] + ".";
         s += "\nPlayer Two Score: " + playerScore[1] + ".";
         if (playerCount >= 3){
@@ -83,8 +84,13 @@ public class GameState {
         if (playerCount == 4){
             s += "\nPlayer Four Score: " + playerScore[3] + ".";
         }
-
+*/
+        for (int i = 0; i < user.size(); i++){
+            s += user.get(i).toString();
+        }
+        /*
         //Player hands
+
         s += "Player One Hand: " + player1Hand.toString() + ".";
         s += "\nPlayer Two Hand: " + player2Hand.toString() + ".";
         if (playerCount >= 3){
@@ -93,7 +99,7 @@ public class GameState {
         if (playerCount == 4){
             s += "\nPlayer Four Hand: " + player4Hand.toString() + ".";
         }
-
+        */
         return s;
     }
 
