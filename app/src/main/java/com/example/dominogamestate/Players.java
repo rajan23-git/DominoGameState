@@ -13,6 +13,17 @@ public class Players {
         playerHand = new ArrayList<>();
         this.score=score;
     }
+    public Players(Players other)
+    {
+        this.id = other.id;
+        this.playerHand= new ArrayList<Domino>(other.playerHand.size());
+        for(int i=0; i< other.playerHand.size();i++)
+        {
+            //this.playerHand.set(i,
+        }
+        this.playerHand = other.playerHand;
+        this.score= other.score;
+    }
 
     public int getId()
     {
@@ -30,5 +41,12 @@ public class Players {
     {
         this.score = score;
     }
-
+    public String toString(){
+        String s = new String();
+        s += "Player " + (id + 1) + " Score: " + score + "\nHand: ";
+        for (Domino d:playerHand) {
+            s += d.toString() + ", ";
+        }
+        return s;
+    }
 }
