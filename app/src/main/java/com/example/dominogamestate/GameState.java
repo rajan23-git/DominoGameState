@@ -17,12 +17,9 @@ public class GameState {
 
         for(int i=0; i <playerCount;i++)
         {
-
-
             Players x = new Players(i,0);
             user.add(x);
         }
-        user.get(0);
 
         // First domino will be placed at [2][5]!!
         board = new Domino[5][11];
@@ -75,7 +72,6 @@ public class GameState {
         for (int i = 0; i < dominoSet.dominos.size(); i++){
             this.dominoSet.dominos.set(i, new Domino(other.dominoSet.dominos.get(i)));
         }
-
     }
     // Fill these in later!!!! Just putting these in to show what we need to do.
     public int[] firstMove() {
@@ -99,13 +95,37 @@ public class GameState {
         return goesFirstInfo;
     }
 
+    public int playerTurn()
+    {
+
+
+        return -1;
+    }
+
     public boolean placePiece(int playerID, Domino domino, int x, int y){
         return false;
     }
 
-    public boolean drawPiece(int playerID){
 
-        return false;
+    public boolean drawPiece(int playerID){
+        int count = 0;
+
+        outerloop:
+        while(!dominoSet.dominos.isEmpty()) {
+            if (placePiece() == false) {
+                user.get(playerID).getHand().add(dominoSet.dominos.get(count));
+                count++;
+            }
+            else
+            {
+                break outerloop;
+            }
+        }
+        if(dominoSet.dominos.isEmpty() && drawPiece() == false)
+        {
+            return false;
+        }
+        return true;
     }
 
     public boolean quitGame(int playerID){

@@ -29,18 +29,22 @@ public class Players {
     {
         return id;
     }
+
     public int getScore()
     {
         return score;
     }
+
     public ArrayList<Domino> getHand()
     {
         return playerHand;
     }
+
     public void setScore(int score)
     {
         this.score = score;
     }
+
     public String toString(){
         String s = new String();
         s += "Player " + (id + 1) + " Score: " + score + "\nHand: ";
