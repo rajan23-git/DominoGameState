@@ -19,7 +19,7 @@ public class Players {
         this.playerHand= new ArrayList<Domino>(other.playerHand.size());
         for(int i=0; i< other.playerHand.size();i++)
         {
-            //this.playerHand.set(i,
+            this.playerHand.set(i, new Domino(other.playerHand.get(i)));
         }
         this.playerHand = other.playerHand;
         this.score= other.score;

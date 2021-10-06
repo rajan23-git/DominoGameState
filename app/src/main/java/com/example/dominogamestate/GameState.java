@@ -5,20 +5,24 @@ import android.app.Activity;
 import java.util.ArrayList;
 
 public class GameState {
+
     private int playerCount;
 
     DominoSet dominoSet;
     Domino[][] board;
     ArrayList<Domino> boneyard;
-    ArrayList<Players> user = new ArrayList<Players>(playerCount);
 
+    ArrayList<Players> user = new ArrayList<Players>(playerCount);
     public GameState() {
 
         for(int i=0; i <playerCount;i++)
         {
+
+
             Players x = new Players(i,0);
             user.add(x);
         }
+        user.get(0);
 
         // First domino will be placed at [2][5]!!
         board = new Domino[5][11];
@@ -43,17 +47,6 @@ public class GameState {
         }
 
     }
-    @Override
-    public String toString(){
-        String s = "";
-
-        for (int i = 0; i < user.size(); i++){
-            s += user.get(i).toString();
-        }
-
-        return s;
-    }
-
 
     public GameState(GameState other) {
         playerCount = other.playerCount;
@@ -110,7 +103,6 @@ public class GameState {
         return false;
     }
 
-
     public boolean drawPiece(int playerID){
 
         return false;
@@ -125,6 +117,35 @@ public class GameState {
         return false;
     }
 
+    @Override
+    public String toString(){
+        String s = new String();
+       /* //Player scores
+        s += "Player One Score: " + playerScore[0] + ".";
+        s += "\nPlayer Two Score: " + playerScore[1] + ".";
+        if (playerCount >= 3){
+            s += "\nPlayer Three Score: " + playerScore[2] + ".";
+        }
+        if (playerCount == 4){
+            s += "\nPlayer Four Score: " + playerScore[3] + ".";
+        }
+*/
+        for (int i = 0; i < user.size(); i++){
+            s += user.get(i).toString();
+        }
+        /*
+        //Player hands
 
+        s += "Player One Hand: " + player1Hand.toString() + ".";
+        s += "\nPlayer Two Hand: " + player2Hand.toString() + ".";
+        if (playerCount >= 3){
+            s += "\nPlayer Three Hand: " + player3Hand.toString() + ".";
+        }
+        if (playerCount == 4){
+            s += "\nPlayer Four Hand: " + player4Hand.toString() + ".";
+        }
+        */
+        return s;
+    }
 
 }
