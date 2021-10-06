@@ -4,22 +4,31 @@ import java.util.ArrayList;
 
 public class GameState {
     private int playerCount;
-    private int[] playerScore = new int[playerCount];
-    private int[] players = new int[playerCount];
+    //private int[] playerScore = new int[playerCount];
+    //private int[] players = new int[playerCount];
 
     DominoSet dominoSet;
     Domino[][] board;
     ArrayList<Domino> boneyard;
 
-    ArrayList<Domino> player1Hand, player2Hand, player3Hand, player4Hand;
-
+    //ArrayList<Domino> player1Hand, player2Hand, player3Hand, player4Hand;
+    //ArrayList<Domino> playerHand;
+    ArrayList<Players> user = new ArrayList<Players>(playerCount);
     public GameState() {
+
+
 
         for(int i=0; i <playerCount;i++)
         {
-            playerScore[i] = 0;
-            players[i]=i;
+            //playerScore[i] = 0;
+            //players[i]=i;
+
+            Players x = new Players(i,0);
+            user.add(x);
         }
+        user.get(0);
+
+
 
         // First domino will be placed at [2][5]!!
         board = new Domino[5][11];
@@ -28,13 +37,17 @@ public class GameState {
         dominoSet = new DominoSet();
         dominoSet.shuffleSet();
 
-        player1Hand = new ArrayList<>();
-        player2Hand = new ArrayList<>();
-        player3Hand = new ArrayList<>();
-        player4Hand = new ArrayList<>();
+        //player1Hand = new ArrayList<>();
+        //player2Hand = new ArrayList<>();
+        //player3Hand = new ArrayList<>();
+        //player4Hand = new ArrayList<>();
+
+
+
 
         for(int i = 0; i < 5; i++){
             //add to player's hands
+            /*
             player1Hand.add(dominoSet.dominos.get(0));
             //remove from deck
             dominoSet.dominos.remove(0);
@@ -47,6 +60,7 @@ public class GameState {
 
             player4Hand.add(dominoSet.dominos.get(0));
             dominoSet.dominos.remove(0);
+            */
         }
 
         for (int i = 0; i < dominoSet.dominos.size(); i++){
@@ -125,10 +139,17 @@ public class GameState {
 
     }
     // Fill these in later!!!! Just putting these in to show what we need to do.
-    public boolean placePiece(int playerID, Domino domino){
+    public int firstMove()
+    {
+
+        return 0;
+    }
+
+    public boolean placePiece(int playerID, Domino domino, int x, int y){
 
         return false;
     }
+
 
     public boolean drawPiece(int playerID){
 
@@ -136,11 +157,14 @@ public class GameState {
     }
 
     public boolean quitGame(int playerID){
+
         return false;
     }
 
     public boolean newGame(int playerID){
         return false;
     }
+
+
 
 }
