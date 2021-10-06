@@ -7,23 +7,18 @@ import java.util.ArrayList;
 public class GameState {
 
     private int playerCount;
-    //private int[] playerScore = new int[playerCount];
-    //private int[] players = new int[playerCount];
 
     DominoSet dominoSet;
     Domino[][] board;
     ArrayList<Domino> boneyard;
 
-    //ArrayList<Domino> player1Hand, player2Hand, player3Hand, player4Hand;
-    //ArrayList<Domino> playerHand;
     ArrayList<Players> user = new ArrayList<Players>(playerCount);
 
     public GameState() {
 
         for(int i=0; i <playerCount;i++)
         {
-            //playerScore[i] = 0;
-            //players[i]=i;
+
 
             Players x = new Players(i,0);
             user.add(x);
@@ -37,28 +32,8 @@ public class GameState {
         dominoSet = new DominoSet();
         dominoSet.shuffleSet();
 
-        //player1Hand = new ArrayList<>();
-        //player2Hand = new ArrayList<>();
-        //player3Hand = new ArrayList<>();
-        //player4Hand = new ArrayList<>();
-
-
         for(int i = 0; i < 5; i++){
-            //add to player's hands
-            /*
-            player1Hand.add(dominoSet.dominos.get(0));
-            //remove from deck
-            dominoSet.dominos.remove(0);
 
-            player2Hand.add(dominoSet.dominos.get(0));
-            dominoSet.dominos.remove(0);
-
-            player3Hand.add(dominoSet.dominos.get(0));
-            dominoSet.dominos.remove(0);
-
-            player4Hand.add(dominoSet.dominos.get(0));
-            dominoSet.dominos.remove(0);
-            */
         }
 
         for (int i = 0; i < dominoSet.dominos.size(); i++){
@@ -72,12 +47,11 @@ public class GameState {
     public GameState(GameState other) {
         playerCount = other.playerCount;
 
-        this.players = new int[playerCount];
-        this.playerScore = new int[playerCount];
-
         for(int i=0; i <playerCount;i++) {
-            this.playerScore[i] = other.playerScore[i];
-            this.players[i]= other.players[i];
+            Players x = new Players(i,0);
+            other.user.add(this.user.get(i));
+
+
         }
 
         this.board = new Domino[5][11];
@@ -91,22 +65,14 @@ public class GameState {
         }
 
         for (int i = 0; i < boneyard.size(); i++){
-            this.boneyard.set(i, other.boneyard.get(i));
+            //this.boneyard.set(i, other.boneyard.get(i));
+            this.boneyard.set(i, new Domino(other.boneyard.get(i)));
         }
 
         for (int i = 0; i < dominoSet.dominos.size(); i++){
-            this.dominoSet.dominos.set(i, other.dominoSet.dominos.get(i));
+            this.dominoSet.dominos.set(i, new Domino(other.dominoSet.dominos.get(i)));
         }
 
-        this.player1Hand = new ArrayList<>();
-        this.player2Hand = new ArrayList<>();
-        this.player3Hand = new ArrayList<>();
-        this.player4Hand = new ArrayList<>();
-
-        this.player1Hand = other.player1Hand;
-        this.player2Hand = other.player2Hand;
-        this.player3Hand = other.player3Hand;
-        this.player4Hand = other.player4Hand;
 
     }
     // Fill these in later!!!! Just putting these in to show what we need to do.
@@ -117,7 +83,6 @@ public class GameState {
     }
 
     public boolean placePiece(int playerID, Domino domino, int x, int y){
-
         return false;
     }
 
