@@ -28,6 +28,23 @@ public class Domino {
         this.weight = other.weight;
     }
 
+    public int getLeftPipCount(){
+        return this.leftPipsCount;
+    }
+
+    public int getRightPipCount(){
+        return this.rightPipsCount;
+    }
+
+    public int getWeight(){
+        return this.weight;
+    }
+
+    public int getOrientation(){
+        return this.orientation;
+    }
+
+
     public String toString(){
         String s = new String();
         s += "(" + leftPipsCount + "|" + rightPipsCount + ")";

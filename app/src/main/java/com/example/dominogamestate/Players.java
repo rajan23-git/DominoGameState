@@ -33,7 +33,7 @@ public class Players {
     {
         return score;
     }
-    public ArrayList getHand()
+    public ArrayList<Domino> getHand()
     {
         return playerHand;
     }
