@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             else
             {
-                e.append("ThirdInstance and SecondInstance do not match.")
+                e.append("ThirdInstance and SecondInstance do not match.");
             }
 
 
