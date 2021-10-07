@@ -116,10 +116,134 @@ public class GameState {
     }
 
 
-    public boolean placePiece(int playerID, int dominoIndex, int x, int y){
+    public boolean placePiece(int playerID, int dominoIndex, int x, int y,int connectedPosition){
+Domino toConnect=null;
+       Domino toBePlaced= (user.get(playerID).getHand()).get(dominoIndex);
+       int leftPips=toBePlaced.getLeftPipCount();
+       int rightPips= toBePlaced.getRightPipCount();
+       int orientation= toBePlaced.getOrientation();
+       if(connectedPosition==1 && board[x][y-1]==null ){
+
+           return false;
+
+       }
+
+       else if(connectedPosition==2 && board[x+1][y]==null ){
+
+            return false;
+
+        }
+       else if(connectedPosition==3 && board[x][y+1]==null ){
+
+            return false;
+
+        }
+       else if(connectedPosition==4 && board[x-1][y]==null ){
+
+            return false;
+
+        }
+
+        if(connectedPosition==1 ){
+
+toConnect=board[x][y-1];
+        }
+
+        else if(connectedPosition==2  ){
+
+            toConnect=board[x+1][y];
+
+        }
+        else if(connectedPosition==3 ){
+
+            toConnect=board[x][y+1];
+
+        }
+        else if(connectedPosition==4  ){
+
+            toConnect=board[x-1][y];
+
+        }
+
+        int leftPipsOther= toConnect.getLeftPipCount();
+        int rightPipsOther= toConnect.getRightPipCount();
+        int orientationOther=toConnect.getOrientation();
+
+        if(orientationOther==0 &&orientation==0){
+         if(rightPipsOther==leftPips){
+             board[x][y]=toBePlaced;
+
+         }
+
+        }
+
+        if(orientationOther==0 &&orientation==1){
+            if(rightPipsOther==leftPips||rightPipsOther==rightPips){
+                board[x][y]=toBePlaced;
+
+            }
+
+        }
+
+        if(orientationOther==0 &&orientation==2){
+            if(rightPipsOther==rightPips){
+                board[x][y]=toBePlaced;
+
+            }
+
+        }
 
 
-        return false;
+        if(orientationOther==0 &&orientation==3){
+            if(rightPipsOther==rightPips||rightPipsOther==leftPips){
+                board[x][y]=toBePlaced;
+
+            }
+
+        }
+
+
+
+        if(orientationOther==1 &&orientation==0){
+            if(leftPipsOther==leftPips||rightPipsOther==leftPips){
+                board[x][y]=toBePlaced;
+
+            }
+
+        }
+
+        if(orientationOther==1 &&orientation==1){
+            if(leftPipsOther==rightPips||rightPipsOther==leftPips){
+                board[x][y]=toBePlaced;
+
+            }
+
+        }
+
+
+        if(orientationOther==1 &&orientation==2){
+            if(leftPipsOther==rightPips||rightPipsOther==rightPips){
+                board[x][y]=toBePlaced;
+
+            }
+
+        }
+        if(orientationOther==1 &&orientation==3){
+            if(leftPipsOther==leftPips||rightPipsOther==rightPips){
+                board[x][y]=toBePlaced;
+
+            }
+
+        }
+
+
+
+
+
+
+
+
+return false;
     }
 
 
