@@ -1,13 +1,19 @@
 package com.example.dominogamestate;
 
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.ImageButton;
+
 import java.util.ArrayList;
 
-public class GameState {
+public class GameState  implements View.OnClickListener, View.OnTouchListener{
     private int playerOneScore;
     private int playerTwoScore;
     private int playerThreeScore;
     private int playerFourScore;
     private int playerCount;
+    private ImageButton selectedDomino;
+    private float [] selectedLoc;
 
     DominoSet dominoSet;
     Domino[][] board;
@@ -15,6 +21,8 @@ public class GameState {
     ArrayList<Domino> player1Hand, player2Hand, player3Hand, player4Hand;
 
     public GameState() {
+        selectedLoc= new float [2];
+
         playerOneScore = 0;
         playerTwoScore = 0;
         playerThreeScore = 0;
@@ -87,11 +95,19 @@ public class GameState {
         }
 
     }
+
+
     // Fill these in later!!!! Just putting these in to show what we need to do.
     public boolean placePiece(int playerID, Domino domino){
 
+
         return false;
     }
+    public boolean checkMove(Domino toSpace,float locX, float locY ){
+
+       return false;
+    }
+
 
     public boolean quitGame(int playerID){
         return false;
@@ -106,4 +122,14 @@ public class GameState {
         return false;
     }
 
+    @Override
+    public void onClick(View v) {
+
+
+    }
+
+    @Override
+    public boolean onTouch(View view, MotionEvent motionEvent) {
+        return false;
+    }
 }
