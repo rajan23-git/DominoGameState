@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class GameState {
 
-    private int playerCount;
+    private int playerCount = 4;
 
     DominoSet dominoSet;
     Domino[][] board;
@@ -26,7 +26,7 @@ public class GameState {
         boneyard = new ArrayList<>(28-playerCount*5);
         // Create a new set of dominoes and shuffle it!
         dominoSet = new DominoSet();
-        dominoSet.shuffleSet();
+        //dominoSet.shuffleSet();
 
         //gives each player 5 dominoes and updates the dominoSet
         for(int i = 0; i < 5; i++){
@@ -38,6 +38,13 @@ public class GameState {
 
         }
 
+        // Taking player 3 and removing their first domino. Then giving them the double six to
+        // ensure that game says they go first!
+        user.get(2).getHand().remove(0);
+        user.get(2).getHand().add(dominoSet.dominos.get(dominoSet.dominos.size() - 1));
+        dominoSet.dominos.remove(dominoSet.dominos.size() - 1);
+
+        // Fill the boneyard with the leftover dominoes in set. Empty dominoSet after.
         for (int i = 0; i < dominoSet.dominos.size(); i++){
             // Fill each piece of boneyard with remaining dominoes in set. Then remove from dominoSet.
             boneyard.set(i, dominoSet.dominos.get(0));
@@ -53,7 +60,9 @@ public class GameState {
 
         for(int i=0; i <playerCount;i++) {
             this.user.set(i, new Players(other.user.get(i)));
+
         }
+
         this.board = new Domino[5][11];
         this.boneyard = new ArrayList<>(other.boneyard.size());
         this.dominoSet = new DominoSet();
@@ -94,10 +103,26 @@ public class GameState {
         return goesFirstInfo;
     }
 
+    public boolean hasValidMove(int playerID){
+        ArrayList<Domino> playerDominos = user.get(playerID).getHand();
+        for(int i = 0; i < user.get(playerID).getHand().size(); i++){
+            if(playerDominos.get(i).getLeftPipCount() == board[0][0].getLeftPipCount()){
+
+            }
+        }
+
+
+        return false;
+    }
+
+    public int playerTurn()
+    {
 
     public boolean placePiece(int playerID, int dominoIndex, int x, int y){
 
 
+        return -1;
+    }
 
 
 
