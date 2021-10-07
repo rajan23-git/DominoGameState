@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             //creating a new gamestate
             GameState firstInstance = new GameState();
-            e.setText(firstInstance.toString());
+            e.append(firstInstance.toString());
             //Making deep copy from player 1 perspective
             GameState secondInstance = new GameState(firstInstance);
 

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class GameState {
 
-    private int playerCount;
+    private int playerCount = 4;
 
     DominoSet dominoSet;
     Domino[][] board;
@@ -26,7 +26,7 @@ public class GameState {
         boneyard = new ArrayList<>(28-playerCount*5);
         // Create a new set of dominoes and shuffle it!
         dominoSet = new DominoSet();
-        dominoSet.shuffleSet();
+        //dominoSet.shuffleSet();
 
         for(int i = 0; i < 5; i++){
             for (int j = 0; i < playerCount; i++) {
@@ -34,15 +34,19 @@ public class GameState {
                 user.get(j).getHand().add(dominoSet.dominos.get(0));
                 dominoSet.dominos.remove(0);
             }
-
         }
 
+        // Taking player 3 and removing their first domino. Then giving them the double six to
+        // ensure that game says they go first!
+        user.get(2).getHand().remove(0);
+        user.get(2).getHand().add(dominoSet.dominos.get(dominoSet.dominos.size() - 1));
+        dominoSet.dominos.remove(dominoSet.dominos.size() - 1);
+
+        // Fill the boneyard with the leftover dominoes in set. Empty dominoSet after.
         for (int i = 0; i < dominoSet.dominos.size(); i++){
-            // Fill each piece of boneyard with remaining dominoes in set. Then remove from dominoSet.
             boneyard.set(i, dominoSet.dominos.get(0));
             dominoSet.dominos.remove(0);
         }
-
     }
 
     public GameState(GameState other) {
@@ -93,6 +97,18 @@ public class GameState {
         goesFirstInfo[0] = playerLowestMax;
         goesFirstInfo[1] = dominoHighestWeight;
         return goesFirstInfo;
+    }
+
+    public boolean hasValidMove(int playerID){
+        ArrayList<Domino> playerDominos = user.get(playerID).getHand();
+        for(int i = 0; i < user.get(playerID).getHand().size(); i++){
+            if(playerDominos.get(i).getLeftPipCount() == board[0][0].getLeftPipCount()){
+
+            }
+        }
+
+
+        return false;
     }
 
     public int playerTurn()
