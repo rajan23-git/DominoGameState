@@ -16,6 +16,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         Button b = (Button) findViewById(R.id.runTest);
         b.setOnClickListener(this);
+
+
     }
 
 
@@ -34,6 +36,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             //Printing out gamestate to the text box
             e.setText(secondInstance.toString());
+
+            //beginning of game
+
+            //Goes through all player's hand and determines the highest double
+            //and whoever does, they will go first.
+            int[] firstMove = firstInstance.firstMove();
+
+            e.setText("Player 3 goes first and places down a domino[6|6]");
+            firstInstance.placePiece(firstMove[0],firstMove[1],2,5);
+            e.setText(firstInstance.toString());
+
+            e.setText("player 2 goes second and places down");
+            firstInstance.placePiece(1,0,0,0);
+            e.setText(firstInstance.toString());
+
+            e.setText("player 1 goes third and does not have valid placePiece");
+            firstInstance.placePiece(0,0,0,0);
+            e.setText(firstInstance.toString());
+
+            e.setText("player 1 draws dominoes until they can make a valid move");
+            firstInstance.drawPiece(0);
+            e.setText(firstInstance.toString());
+
+            e.setText("player 1 goes again and places down");
+            firstInstance.placePiece(0,0,0,0);
+            e.setText(firstInstance.toString());
+
+
+
+
+
+
+
+
+
 
         }
     }

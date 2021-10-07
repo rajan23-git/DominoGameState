@@ -14,7 +14,7 @@ public class GameState {
 
     ArrayList<Players> user = new ArrayList<Players>(playerCount);
     public GameState() {
-
+        //create player objects equal to the amount of players playing.
         for(int i=0; i <playerCount;i++)
         {
             Players x = new Players(i,0);
@@ -28,6 +28,7 @@ public class GameState {
         dominoSet = new DominoSet();
         dominoSet.shuffleSet();
 
+        //gives each player 5 dominoes and updates the dominoSet
         for(int i = 0; i < 5; i++){
             for (int j = 0; i < playerCount; i++) {
 
@@ -52,9 +53,7 @@ public class GameState {
 
         for(int i=0; i <playerCount;i++) {
             this.user.set(i, new Players(other.user.get(i)));
-
         }
-
         this.board = new Domino[5][11];
         this.boneyard = new ArrayList<>(other.boneyard.size());
         this.dominoSet = new DominoSet();
@@ -95,14 +94,13 @@ public class GameState {
         return goesFirstInfo;
     }
 
-    public int playerTurn()
-    {
+
+    public boolean placePiece(int playerID, int dominoIndex, int x, int y){
 
 
-        return -1;
-    }
 
-    public boolean placePiece(int playerID, Domino domino, int x, int y){
+
+
         return false;
     }
 
@@ -121,10 +119,15 @@ public class GameState {
 
     public boolean quitGame(int playerID){
 
+
         return false;
     }
 
     public boolean newGame(int playerID){
+
+
+
+
         return false;
     }
 
