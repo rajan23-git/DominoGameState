@@ -43,24 +43,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //and whoever does, they will go first.
             int[] firstMove = firstInstance.firstMove();
 
-            e.append("Player 3 goes first and places down a domino[6|6]");
-            firstInstance.placePiece(firstMove[0],firstMove[1],2,5);
+            e.append("\nPlayer 3 goes first and places down a domino[6|6]");
+            firstInstance.placeFirstPiece(firstMove[0],firstMove[1]);
             e.append(firstInstance.toString());
 
-            e.append("player 2 goes second and places down");
-            firstInstance.placePiece(1,0,0,0);
+            e.append("\nPlayer 2 goes second and places down domino[0|6]. Player 2 gets 6 points.");
+            firstInstance.placePiece(1,4,0,1);
             e.append(firstInstance.toString());
 
-            e.append("player 1 goes third and does not have valid placePiece");
-            firstInstance.placePiece(0,0,0,0);
-            e.append(firstInstance.toString());
-
-            e.append("player 1 draws dominoes until they can make a valid move");
+            e.append("\nPlayer 1 goes third and does not have valid placePiece. They draw" +
+                    " domino[0|3].");
             firstInstance.drawPiece(0);
             e.append(firstInstance.toString());
 
-            e.append("player 1 goes again and places down");
-            firstInstance.placePiece(0,0,0,0);
+            e.append("\nPlayer 1 places domino[0|3]. Player 1 gains 9 points.");
+            firstInstance.placePiece(0,5,0,2);
+            e.append(firstInstance.toString());
+
+            e.append("\n Player 3 presses 'Quit Game' and forfeits.");
+            firstInstance.quitGame(2);
+            e.append("\n Player 3's score being set to -1 indicates they have forfeited by" +
+                    " pressing 'Quit Game'.");
+            e.append(firstInstance.toString());
+
+            e.append("\n Player 2 presses New Game. Their score is set to -2 to indicate they" +
+                    " have forfeited by pressing New Game." +
+                    " In the complete app, it will go back to start screen.");
+            firstInstance.newGame(1);
             e.append(firstInstance.toString());
 
             //creates a third instance of the game and sets it to secondInstance
@@ -74,15 +83,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             else
             {
-                e.append("ThirdInstance and SecondInstance do not match.");
+                e.append("\nThirdInstance and SecondInstance do not match.");
             }
-
-
-
-
-
-
-
         }
     }
 }

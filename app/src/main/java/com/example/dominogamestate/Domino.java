@@ -2,17 +2,10 @@ package com.example.dominogamestate;
 
 public class Domino {
 
-    private final int leftPipsCount;
-    private final int rightPipsCount;
+    private int leftPipsCount;
+    private int rightPipsCount;
     private int orientation;
-    private final int weight;
-
-    /*public Domino(){
-        leftPipsCount = 0;
-        rightPipsCount = 0;
-        orientation = 0;
-        weight = 0;
-    }*/
+    private int weight;
 
     public Domino(int pipsLeft, int pipsRight, int paramOrientation, int weightParam){
         leftPipsCount = pipsLeft;
@@ -40,15 +33,30 @@ public class Domino {
         return this.weight;
     }
 
-    public int getOrientation(){
-        return this.orientation;
+    public void setOrientation(int o){
+        this.orientation = o;
+        // Orientation 3 is 180 degree rotation, swap pips.
+        if (o == 3){
+            int tmp = this.leftPipsCount;
+            this.leftPipsCount = rightPipsCount;
+            rightPipsCount = tmp;
+
+        }
     }
 
-
+    @Override
     public String toString(){
-        String s = new String();
-        s += "(" + leftPipsCount + "|" + rightPipsCount + ")";
+        String s = "";
+        s += "[" + leftPipsCount + "|" + rightPipsCount + "]";
+
+        s += " Orientation: " + orientation;
+        s += " Weight:" + weight;
         return s;
+    }
+    // We're using a seperate method here to not print Orientation or Weight. When the domino is
+    // placed, these values no longer matter.
+    public String pipsToString(){
+        return "[" + leftPipsCount + "|" + rightPipsCount + "]";
     }
 
 }

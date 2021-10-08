@@ -1,9 +1,11 @@
 package com.example.dominogamestate;
 
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 
 public class Players {
-    private int id;
+    private final int id;
     private int score;
     private ArrayList<Domino> playerHand;
 
@@ -19,7 +21,7 @@ public class Players {
         this.playerHand= new ArrayList<Domino>(other.playerHand.size());
         for(int i=0; i< other.playerHand.size();i++)
         {
-            this.playerHand.set(i, new Domino(other.playerHand.get(i)));
+            this.playerHand.add(new Domino(other.playerHand.get(i)));
         }
         this.playerHand = other.playerHand;
         this.score= other.score;
@@ -30,9 +32,8 @@ public class Players {
         return id;
     }
 
-    public int getScore()
-    {
-        return score;
+    public void addPoints(int points){
+        this.score += points;
     }
 
     public ArrayList<Domino> getHand()
@@ -45,12 +46,13 @@ public class Players {
         this.score = score;
     }
 
+    @NonNull
     public String toString(){
-        String s = new String();
-        s += "Player " + (id + 1) + " Score: " + score + "\nHand: ";
+        StringBuilder s = new StringBuilder();
+        s.append("Player ").append(id + 1).append(" Score: ").append(score).append("\nHand: ");
         for (Domino d:playerHand) {
-            s += d.toString() + ", ";
+            s.append(d.toString()).append(", ");
         }
-        return s;
+        return s.toString();
     }
 }
