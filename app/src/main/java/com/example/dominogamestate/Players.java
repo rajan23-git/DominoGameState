@@ -3,7 +3,13 @@ package com.example.dominogamestate;
 import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
-
+/**
+ * Players class that creates a player object to keep track of score and hand.
+ * @author Connor Burk
+ * @author David Le
+ * @author Paul Kenstler
+ * @author Pranav Rajan
+ */
 public class Players {
     private final int id;
     private int score;

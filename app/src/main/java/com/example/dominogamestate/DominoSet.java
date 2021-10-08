@@ -10,6 +10,13 @@ import java.util.Collections;
     Took some code from here and ported it from C# to Java because I liked the way they did it.
     https://codereview.stackexchange.com/questions/58464/basic-domino-game-architecture
  */
+
+/** DominoSet class that creates a set of dominoes for the game.
+ * @author Connor Burk
+ * @author David Le
+ * @author Paul Kenstler
+ * @author Pranav Rajan
+ */
 public class DominoSet {
     public ArrayList<Domino> dominos;
 

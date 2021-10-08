@@ -1,7 +1,13 @@
 package com.example.dominogamestate;
 
 import java.util.ArrayList;
-
+/**
+ * GameState class for Dominoes.
+ * @author Connor Burk
+ * @author David Le
+ * @author Paul Kenstler
+ * @author Pranav Rajan
+ */
 public class GameState {
 
     private int playerCount = 3;

@@ -1,5 +1,11 @@
 package com.example.dominogamestate;
-
+/**
+ * Domino class that creates dominoes for use in the game.
+ * @author Connor Burk
+ * @author David Le
+ * @author Paul Kenstler
+ * @author Pranav Rajan
+ */
 public class Domino {
 
     private int leftPipsCount;
